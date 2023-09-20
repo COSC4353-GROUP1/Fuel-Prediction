@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Prediction</title>
+
+    <link rel="shortcut icon" href="images/logo/logo.webp" />
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/AlertifyJS/build/css/alertify.css">
+
+    <link rel="stylesheet" href="css/auth.css">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/AlertifyJS/build/alertify.js"></script>
+
+    <script src="js/authConfig.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class ="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 text-center" style = "padding-top: 95px">
+                <a class="btn big-login" data-toggle="modal" href="javascript:void(0)"  onclick="openLoginModal();">Login</a>
+                <a class="btn big-register" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="modal fade login" id="loginModal">
+            <div class="modal-dialog login animated">
+                <div class="modal-content">     
+                    <!--modal header-->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    
+                    <div class="modal-body">
+                         <!--alert-->
+                        <!-- <div>
+                            <div class="alert alert-danger">error</div>
+                            <div class="alert alert-success">success</div>
+                        </div> -->                       
+                        <!-- login -->
+                        <div class="box">
+                            <div class="content">
+                                <div class="form loginBox">
+                                    <form method="POST" action="/login">
+                                        <input type="text" name="email" placeholder="Email" class="form-control" required>
+                                        <input type="password" name="password" placeholder="Password" class="form-control" required>
+                                        <input type="submit" value="Login" class="btn btn-default btn-login">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- register -->
+                        <div class="box">
+                            <div class="content registerBox" style="display:none;">
+                                <div class="form">
+                                    <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
+                                        <input id="email" class="form-control" type="text" placeholder="Email" name="email" required>
+                                        &nbsp;<label class="radio-inline"><input type="radio" name="gender" value="male" checked required> Male</label>&nbsp;
+                                        &nbsp;<label class="radio-inline"><input type="radio" name="gender" value="female" required> Female</label>&nbsp;
+                                        <input id="password" class="form-control" type="password" placeholder="Password" name="password" required>
+                                        <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation" required>
+                                        <input class="btn btn-default btn-register" type="submit" value="Create an account" name="commit">
+                                    </form>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                    </div>
+                    
+                    <!-- modal footer-->
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            <span>Do you have an account yet?
+                            <a href="javascript: showRegisterForm();">Create a new account</a>
+                            </span>
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                            <span>Did you already have an account?</span>
+                            <a href="javascript: showLoginForm();">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

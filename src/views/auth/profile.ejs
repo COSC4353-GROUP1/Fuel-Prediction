@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+	<link rel="shortcut icon" href="images/logo/logo.webp" />
+    <link rel="stylesheet" href="css/profile.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="profile">
+			<div class="profile-form">
+				<div class="profile-title">Complete Your Profile Infomation</div>
+				<hr style= "border: solid 1px">
+				<form style="display:grid">
+					<!-- "fullname-->
+					<div class="form-group">
+						<label class="col-md-3 control-label">Fullname</label>
+							<div class="col-md-8">
+									<input id="input-change-username" class="form-control" type="text" name="username" value="" maxlength="50" placeholder="Enter Fullname">
+							</div>
+					</div>
+					<!-- Gender-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Gender</label>
+						<div class="col-lg-8">
+							<label class="col-lg-2 inline">male
+									<input id="input-change-gender-male" type="radio" name="gender" value="male" required>
+									<span class="checkmark"></span>
+							</label>
+							<label class="">Female
+									<input id="input-change-gender-female"type="radio" name="gender" value="female" required>
+									<span class="checkmark"></span>
+							</label>
+						</div>
+					</div>
+					<!-- Address_1-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Address 1</label>
+						<div class="col-lg-8">
+						<input id="input-change-address_1"class="form-control" type="text" name="address_1" value="" maxlength="100" placeholder="Enter address 1">
+						</div>
+					</div>
+					
+					<!-- Address_2-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Address 2</label>
+						<div class="col-lg-8">
+						<input id="input-change-address_2"class="form-control" type="text" name="address_2" value="" maxlength="100" placeholder="Enter address 2">
+					</div>
+					</div>
+					
+					<!-- city-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">City</label>
+						<div class="col-lg-8">
+						<input id="input-change-city"class="form-control" type="text" name="city" value="" maxlength="100" placeholder="Enter city">
+						</div>
+					</div>	
+					<!-- State-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label" maxlength="2">State</label>
+						<div class="col-lg-8">
+						<!--- United States states -->
+							<select>
+								<option>SELECT STATE</option>
+								<option value="AL">AL</option>
+								<option value="AK">AK</option>
+								<option value="AZ">AZ</option>
+								<option value="AR">AR</option>
+								<option value="CA">CA</option>
+								<option value="CO">CO</option>
+								<option value="CT">CT</option>
+								<option value="DE">DE</option>
+								<option value="DC">DC</option>
+								<option value="FL">FL</option>
+								<option value="GA">GA</option>
+								<option value="HI">HI</option>
+								<option value="ID">ID</option>
+								<option value="IL">IL</option>
+								<option value="IN">IN</option>
+								<option value="IA">IA</option>
+								<option value="KS">KS</option>
+								<option value="KY">KY</option>
+								<option value="LA">LA</option>
+								<option value="ME">ME</option>
+								<option value="MD">MD</option>
+								<option value="MA">MA</option>
+								<option value="MI">MI</option>
+								<option value="MN">MN</option>
+								<option value="MS">MS</option>
+								<option value="MO">MO</option>
+								<option value="MT">MT</option>
+								<option value="NE">NE</option>
+								<option value="NV">NV</option>
+								<option value="NH">NH</option>
+								<option value="NJ">NJ</option>
+								<option value="NM">NM</option>
+								<option value="NY">NY</option>
+								<option value="NC">NC</option>
+								<option value="ND">ND</option>
+								<option value="OH">OH</option>
+								<option value="OK">OK</option>
+								<option value="OR">OR</option>
+								<option value="PA">PA</option>
+								<option value="RI">RI</option>
+								<option value="SC">SC</option>
+								<option value="SD">SD</option>
+								<option value="TN">TN</option>
+								<option value="TX">TX</option>
+								<option value="UT">UT</option>
+								<option value="VT">VT</option>
+								<option value="VA">VA</option>
+								<option value="WA">WA</option>
+								<option value="WV">WV</option>
+								<option value="WI">WI</option>
+								<option value="WY">WY</option>
+							</select>
+						</div>     
+					</div>
+					
+					<!-- Zipcode-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">ZipCode</label>
+						<div class="col-lg-8">
+							<input id="input-change-zipcode"class="form-control" type="text" name="zipcode" value="" maxlength="9" minlength ="5" placeholder="Enter ZipCode">
+						</div>
+					</div>
+					
+					<!--phone number-->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Phone Number</label>
+						<div class="col-lg-8">
+							<input id="input-change-phone" class="form-control" type="text" name="phone" value="" placeholder="Enter phone number">
+						</div>
+					</div>
+					<!-- button update and cancel-->
+					<div class="form-group">
+						<label class="col-md-3 "></label>
+						<div class="col-md-8 control-label">
+							<input type="button" id="input-btn-update-user" class="btn btn-primary custom-background-btn-primary" name="submit" value="Update">
+							<span></span>
+							<input type="button" id="input-btn-cancel-update-user"class="btn btn-default custom-background-btn-reset" value="Cancel">
+						</div>
+					</div>
+				</form>
+			</div>	
+		</div>	
+	</div>   
+</body>
+</html>
