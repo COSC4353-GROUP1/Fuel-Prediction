@@ -14,7 +14,7 @@ let InitRoute =(app) => {
         return res.render("auth/profile");
     });
     router.get("/fuelPrediction", (req,res) => {
-        return res.render("auth/fuelPrediction");
+        return res.render("master/fuelPrediction");
     });
 
     return app.use("/",router)
