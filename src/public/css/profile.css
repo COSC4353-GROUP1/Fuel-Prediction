@@ -1,43 +1,101 @@
 body {
-  
-    height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
     background-image: url("../images/background/fuel_prediction_background2.jpg");
     background-size: cover;
-    background-repeat: none;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     color: black;
-}
-
-.container {height: 100%;}
-
-div .profile-form {
-    width: 1000px;
-    display: inline-block;
-    border: 5px solid #969595;
-    background-color:#ede6e6;
-    border-radius: 20px;
-}
-
-.profile-title {
-    font-size: 20px;
-    text-align: center;
-    padding:auto;
-}
-
-.control-label {
-    text-align: center;
-}
-.profile {
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
 }
 
-.form-control:hover{
-    border: 3px solid #add8e6;
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.profile-form {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.divider {
+    border: solid 1px #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.gender-options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gender-option {
+    flex-basis: 45%;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-default {
+    background-color: #ccc;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.btn-primary,
+.btn-default {
+    flex-basis: 45%; 
+    text-align: center;
 }
