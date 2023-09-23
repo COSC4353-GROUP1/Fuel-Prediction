@@ -11,7 +11,7 @@ let port = 8017;
 //config view engine
 configViewEngine(app);
 
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static("public"));
 //Init all routes
 initRoutes(app);
 app.listen(port, hostname, () => {
