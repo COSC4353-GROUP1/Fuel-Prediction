@@ -6,7 +6,8 @@ install node js https://nodejs.org/en
 in vs code, install babel by command: 
 => npm i @babel/cli @babel/core @babel/node @babel/preset-env --save-dev
 install bower_components for the project:
-=> bower install
+=> bower install 
+or (bower install https://github.com/trungquan17/awesome-chat-third-party-libraries.git)
 to run project 
 => npm start
 
