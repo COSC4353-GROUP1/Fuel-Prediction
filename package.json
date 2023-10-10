@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HDTran91/Fuel-Prediction.git"
+    "url": "git+https://github.com/COSC4353-GROUP1/Fuel-Prediction.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HDTran91/Fuel-Prediction/issues"
+    "url": "https://github.com/COSC4353-GROUP1/Fuel-Prediction/issues"
   },
-  "homepage": "https://github.com/HDTran91/Fuel-Prediction#readme",
+  "homepage": "https://github.com/COSC4353-GROUP1/Fuel-Prediction#readme",
   "dependencies": {
     "alertifyjs": "^1.13.1",
     "bcrypt": "^5.1.1",
