@@ -25,6 +25,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 //using flash
 app.use(connectFlash());
 
+
+//Init routes
 initRoutes(app);
 app.listen(port, hostname, () => {
     console.log(`Hello Group 1, I am running at ${hostname}:${port}/`)
