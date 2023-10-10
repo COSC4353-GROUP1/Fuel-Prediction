@@ -48,7 +48,7 @@
                             <div class="content">
                                 <div class="form loginBox">
                                     <form method="POST" action="/login">
-                                        <input type="text" name="email" placeholder="Email" class="form-control" required>
+                                        <input type="text" name="username" placeholder="Username" class="form-control" required>
                                         <input type="password" name="password" placeholder="Password" class="form-control" required>
                                         <input type="submit" value="Login" class="btn btn-default btn-login">
                                     </form>
@@ -60,9 +60,7 @@
                             <div class="content registerBox" style="display:none;">
                                 <div class="form">
                                     <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
-                                        <input id="email" class="form-control" type="text" placeholder="Email" name="email" required>
-                                        &nbsp;<label class="radio-inline"><input type="radio" name="gender" value="male" checked required> Male</label>&nbsp;
-                                        &nbsp;<label class="radio-inline"><input type="radio" name="gender" value="female" required> Female</label>&nbsp;
+                                        <input id="username" class="form-control" type="text" placeholder="Username" name="username" required>
                                         <input id="password" class="form-control" type="password" placeholder="Password" name="password" required>
                                         <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation" required>
                                         <input class="btn btn-default btn-register" type="submit" value="Create an account" name="commit">

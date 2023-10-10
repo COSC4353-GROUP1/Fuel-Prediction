@@ -1,4 +1,10 @@
 import express from "express";
+import {auth, fuelPrediction, profile} from "./../controller/index"
+import { authValid } from "../validation";
+import passport from "passport";
+import InitPassportLocal from "../controller/passportController";
+
+InitPassportLocal();
 
 let router = express.Router();
 
@@ -7,15 +13,19 @@ let router = express.Router();
  */
 
 let InitRoute =(app) => {
-    router.get("/loginRegister", (req,res) => {
-        return res.render("auth/loginRegister");
-    });
-    router.get("/profile", (req,res) => {
-        return res.render("auth/profile");
-    });
-    router.get("/fuelPrediction", (req,res) => {
-        return res.render("master/fuelPrediction");
-    });
+    router.get("/loginRegister", auth.getLoginRegister);
+    router.get("/profile", profile.getProfile);
+    router.get("/fuelPrediction", fuelPrediction.getFuelPredictionController);
+
+    router.post("/register", authValid.register, auth.postRegister)
+
+    router.post("/login", passport.authenticate("local",{
+        successRedirect: "/profile",
+        failureRedirect: "/loginRegister",
+        successFlash: true,
+        failureFlash: true
+    }))
+
 
     return app.use("/",router)
 }
