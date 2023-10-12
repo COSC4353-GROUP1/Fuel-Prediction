@@ -10,6 +10,7 @@
 
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="js/profileConfig.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="container">
@@ -17,12 +18,12 @@
 			<div class="profile-form">
 				<div class="profile-title">Complete Your Profile Information</div>
 				<hr style= "border: solid 1px">
-				<form style="display:grid">
+				<form style="display:grid" id="profileForm" method="post" action="/profilecontrol">
 					<!-- "fullname-->
 					<div class="form-group">
 						<label class="col-md-2 control-label">Fullname</label>
 							<div class="col-md-9">
-									<input id="input-change-username" class="form-control" type="text" name="username" value="" maxlength="50" placeholder="Enter Fullname">
+									<input id="input-change-username" class="form-control" type="text" name="name" value="" maxlength="50" placeholder="Enter Fullname">
 							</div>
 					</div>
 					<!-- Gender-->
@@ -67,7 +68,7 @@
 						<label class="col-lg-2 control-label" maxlength="2">State</label>
 						<div class="col-lg-9">
 						<!--- United States states -->
-							<select>
+							<select name="state">
 								<option>SELECT STATE</option>
 								<option value="AL">AL</option>
 								<option value="AK">AK</option>
@@ -144,9 +145,9 @@
 						<label class="col-md-2 "></label>
 						<div class="col-md-9 control-label button-container">
 							<div>
-								<input type="button" id="input-btn-update-user" class="btn btn-primary custom-background-btn-primary" name="submit" value="Update">
+								<input type="submit" id="input-btn-update-user" class="btn btn-primary custom-background-btn-primary"  value="Update" > 
 								<span></span>
-								<input type="button" id="input-btn-cancel-update-user" class="btn btn-default custom-background-btn-reset" value="Cancel">
+								<input type="button" id="input-btn-cancel-update-user" class="btn btn-default custom-background-btn-reset" onclick="cancelEdit()" value="Cancel">
 							</div>
 						</div>
 					</div>
@@ -154,5 +155,6 @@
 			</div>	
 		</div>	
 	</div>   
+	
 </body>
 </html>

@@ -1,5 +1,5 @@
 import express from "express";
-import {auth, fuelPrediction, profile} from "./../controller/index"
+import {auth, fuelPrediction, profile, profileUpdate} from "./../controller/index"
 import { authValid } from "../validation";
 import passport from "passport";
 import InitPassportLocal from "../controller/passportController";
@@ -24,9 +24,9 @@ let InitRoute =(app) => {
         failureRedirect: "/loginRegister",
         successFlash: true,
         failureFlash: true
-    }))
-
-
+    }));
+   
+    router.post('/profilecontrol', profile.profileUpdate);
     return app.use("/",router)
 }
 module.exports = InitRoute;
