@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 // model for users
 let Schema = mongoose.Schema; 
 
-let UserSchema = new Schema({
+const UserSchema = new Schema({
   username: String,
   gender: {type: String, default: "male"},
   address_1: {type: String, default: null},
@@ -28,12 +28,16 @@ UserSchema.statics = {
 }
 
 
-module.exports = mongoose.model ("user",UserSchema);
-UserSchema.methods.updateProfile = function(updates) {
-  // update fields
-  this.set(updates);
-  return this.save();
-}
+
+UserSchema.method.createData = function(inputData, callback){
+               
+     userData= new userTable(inputData);
+     userData.save(function(err, data){
+       if (err) throw err;
+        return callback(data);
+     });
+  }
+
 UserSchema.methods.clearProfile = function() {
   // reset fields
   this.set({
@@ -49,3 +53,4 @@ UserSchema.methods.clearProfile = function() {
   
   return this.save();
 }
+module.exports = mongoose.model("User", UserSchema);

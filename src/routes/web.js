@@ -26,7 +26,7 @@ let InitRoute =(app) => {
         failureFlash: true
     }));
    
-    router.post('/profilecontrol', profile.profileUpdate);
+    router.post('/updateProfile', profile.profileUpdate);
     return app.use("/",router)
 }
 module.exports = InitRoute;
