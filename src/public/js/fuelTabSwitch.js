@@ -1,34 +1,36 @@
-function openTab(){
-    // Get tab container, tab buttons and tab content divs
-  const tabButtons = document.querySelectorAll(".nav-button"); 
-  const tabContents = document.querySelectorAll(".tabcontent");
-
-  // Function to switch tab
-  const switchTab = (tabIndex) => {
-    // Hide all tab content divs
-    tabContents.forEach(tabContent => {
-      tabContent.style.display = "none";
-    });
-    
-    // Remove 'active' class from all buttons
-    tabButtons.forEach(tabButton => {
-      tabButton.classList.remove("active");
-    });
-
-    // Show selected tab content div
-    tabContents[tabIndex].style.display = "block";
-    
-    // Add 'active' class to selected button
-    tabButtons[tabIndex].classList.add("active");
+function openTab(evt, tabName) {
+  var i, tabcontent, navbutton;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
   }
-
-  // Add click event to tab buttons
-  tabButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      switchTab(index);
-    });
-  });
-
-  // Show first tab content by default
-  switchTab(0);
+  navbutton = document.getElementsByClassName("nav-button");
+  for (i = 0; i < navbutton.length; i++) {
+      navbutton[i].style.backgroundColor = "";
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.style.backgroundColor = "#007bff";
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var gallons = document.getElementById('gallons').value;
+      var suggestedPrice = document.getElementById('suggested-price').value;
+      var totalDue = gallons * suggestedPrice;
+
+      document.getElementById('total-due').value = totalDue.toFixed(2);
+      addToHistory(gallons, suggestedPrice, totalDue);
+  });
+});
+
+function addToHistory(gallons, pricePerGallon, totalDue) {
+  var table = document.querySelector("#History tbody");
+  var row = table.insertRow();
+  row.insertCell(0).innerText = gallons;
+  row.insertCell(1).innerText = document.getElementById('address').value;
+  row.insertCell(2).innerText = document.getElementById('delivery-date').value;
+  row.insertCell(3).innerText = `$${pricePerGallon}`;
+  row.insertCell(4).innerText = `$${totalDue.toFixed(2)}`;
+}
+
