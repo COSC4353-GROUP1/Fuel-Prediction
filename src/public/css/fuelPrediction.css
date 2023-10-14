@@ -61,7 +61,7 @@ button[type="submit"]:hover {
   background-color: #0062cc;
 }
 
-#History { /* Set the background of the "Fuel Quote History" tab to white */
+#History { 
   background-color: white;
 }
 
