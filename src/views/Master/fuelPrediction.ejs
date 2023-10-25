@@ -5,38 +5,52 @@
     <title>Fuel Prediction</title>
     <link rel="shortcut icon" href="images/logo/logo.webp" />
     <link rel="stylesheet" href="css/fuelPrediction.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
     <script src="js/fuelTabSwitch.js" type="text/javascript"></script>
 </head>
 <body>
+  <div class="setting" style="width: 100%; text-align: left;">
+    <div class="dropdown">
+      <button class="btn">
+        <i class="fa fa-cog" aria-hidden="true" style="font-size: 20px;"></i>
+      </button>
+      <div class="dropdown-options">
+        <a href="http://localhost:8017/profile" style="color: black; text-decoration: none;">Update Profile</a>
+        <hr>
+        <a href="/logout" style="color: black; text-decoration: none;">Logout</a>
+      </div>
+    </div>
+  </div>
+  
     <div class="button-container">
         <button class="nav-button" onclick="openTab(event, 'Form')">Fuel Quote Form</button>
         <button class="nav-button" onclick="openTab(event, 'History')">Fuel Quote History</button>
       </div>
       
-
-<div id="Form" class="tabcontent" style="display:block">
-  <div id="quote-form">
-      <form>
-          <label for="gallons">Gallons Requested:</label>
-          <input type="number" id="gallons" name="gallons" required>
-
-          <label for="address">Delivery Address:</label>
-          <input type="text" id="address" name="address" required>
-
-          <label for="delivery-date">Delivery Date:</label>
-          <input type="date" id="delivery-date" name="delivery-date" required>
-
-          <label for="suggested-price">Suggested Price / Gallon:</label>
-          <input type="number" id="suggested-price" name="suggested-price" required>
-
-          <label for="total-due">Total Amount Due:</label>
-          <input type="number" id="total-due" name="total-due" readonly>
-
-          <button type="submit">Submit Quote</button>
-      </form>
-  </div>
-</div>
-
+      <!-- Tab Content -->
+      <div id="Form" class="tabcontent" style="display:block">
+        <div id="quote-form">
+          <form>
+            <label for="gallons">Gallons Requested:</label>
+            <input type="number" id="gallons" name="gallons" required>
+      
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" readonly value="123 Main St">
+      
+            <label for="delivery-date">Delivery Date:</label>   
+            <input type="date" id="delivery-date" name="delivery-date" required>
+      
+            <label for="suggested-price">Suggested Price / Gallon:</label>
+            <input type="number" id="suggested-price" name="suggested-price" readonly value="2.99">
+      
+            <label for="total-due">Total Amount Due:</label>
+            <input type="number" id="total-due" name="total-due" readonly>
+      
+            <button type="submit">Submit Quote</button>
+          </form>
+        </div>
+      </div>
       
       <div id="History" class="tabcontent">
         <table>
@@ -50,6 +64,13 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>10</td>
+              <td>123 Main St</td>
+              <td>09/21/2023</td>
+              <td>$2.99</td> 
+              <td>$29.90</td>
+            </tr>
           </tbody>
         </table> 
       </div>
