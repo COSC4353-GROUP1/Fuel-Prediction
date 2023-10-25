@@ -14,7 +14,6 @@ import cookieParser from "cookie-parser";
 //Init app
 let app = express();
 
-
 //connect mongodb
 connectDB()
 

@@ -117,3 +117,6 @@ tr:nth-child(even) {
 .dropdown:hover .dropdown-options{
   display: block;
 }
+.setting {
+  position: fixed;
+}
