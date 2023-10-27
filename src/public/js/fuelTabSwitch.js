@@ -12,15 +12,41 @@ function openTab(evt, tabName) {
   evt.currentTarget.style.backgroundColor = "#007bff";
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('form').addEventListener('submit', function (e) {
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('form').addEventListener('submit', async function(e) {
       e.preventDefault();
+
       var gallons = document.getElementById('gallons').value;
+      var address = document.getElementById('address').value;
+      var deliveryDate = document.getElementById('delivery-date').value;
       var suggestedPrice = document.getElementById('suggested-price').value;
       var totalDue = gallons * suggestedPrice;
 
       document.getElementById('total-due').value = totalDue.toFixed(2);
       addToHistory(gallons, suggestedPrice, totalDue);
+
+      try {
+          const response = await fetch('/fuelPredictionData', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  gallons,
+                  address,
+                  deliveryDate,
+                  suggestedPrice,
+                  totalDue
+              }),
+          });
+
+          const data = await response.json();
+          if (!data.success) {
+              console.error('Error storing data:', data.message);
+          }
+      } catch (error) {
+          console.error('Fetch error:', error);
+      }
   });
 });
 

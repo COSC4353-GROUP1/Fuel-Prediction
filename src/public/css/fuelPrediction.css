@@ -1,5 +1,4 @@
 body {
-  
   height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -8,9 +7,10 @@ body {
   font-weight: 400;
   background-image: url("../images/background/fuel_prediction_background.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat; 
   color: black;
 }
+
 .tab button {
   background-color: #595757;
   color: white;
@@ -20,7 +20,6 @@ body {
   padding: 10px 20px;
 }
 
-/* Style tab content */
 .tabcontent {
   display: none;
   padding: 20px;
@@ -83,9 +82,15 @@ th {
   color: #fff;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+table tr:nth-child(odd) {
+  background-color: #ffffff;
 }
+
+table tr:nth-child(even) {
+  background-color: #b3e0ff;
+  color: #333; 
+}
+
 .button-container {
   text-align: center;
   margin-bottom: 20px;
@@ -104,6 +109,7 @@ tr:nth-child(even) {
   position: relative;
   height: 100px;
 }
+
 .dropdown-options {
   display: none;
   position: absolute;
@@ -111,10 +117,8 @@ tr:nth-child(even) {
   text-align: left;
   width: 150px;
   margin-top: 5px;
-
 }
 
-.dropdown:hover .dropdown-options{
+.dropdown:hover .dropdown-options {
   display: block;
 }
-
