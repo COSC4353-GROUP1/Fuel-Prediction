@@ -15,7 +15,13 @@ const data = {
 function cancelEdit() {
     const form = document.getElementById('profileForm');
     
-      form.reset(); 
+    form.elements['gender'].value= 'male'
+    form.elements['address_1'].value= ''
+    form.elements['address_2'].value=''
+    form.elements['city'].value=''
+    form.elements['state'].value=''
+    form.elements['zipcode'].value=''
+    form.elements['phone'].value=''
 }
     
 	

@@ -33,4 +33,3 @@ function addToHistory(gallons, pricePerGallon, totalDue) {
   row.insertCell(3).innerText = `$${pricePerGallon}`;
   row.insertCell(4).innerText = `$${totalDue.toFixed(2)}`;
 }
-

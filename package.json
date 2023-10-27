@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node src/server.js"
+    "start": "source src/sh/env.sh && babel-node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,14 +23,21 @@
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.1",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-extend": "^0.0.1",
+    "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.5.0",
+    "mongodb": "^5.9.0",
     "mongoose": "^7.6.0",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "session": "^0.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",

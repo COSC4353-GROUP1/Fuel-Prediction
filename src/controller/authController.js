@@ -1,14 +1,20 @@
 import { validationResult } from "express-validator";
 import { authSer } from "./../Services/index";
-import { userDB } from "../models/userDb";
+import { transSuccess } from "../../lang/Eng";
+import userModel from "./../models/userModel"
+
 
 let getLoginRegister =  (req,res) => {
-    return res.render("auth/loginRegister");
+    return res.render("auth/loginRegister/loginRegister",{
+        errors: req.flash("error"),
+        success: req.flash("success")
+    });
 }
 
-//update user to database (assigment 4)
-let postRegister = (req,res) => {
+
+let postRegister = async (req,res) => {
     let errorArr= [];
+    let successArr = [];
     // console.log(validationResult(req));
     // console.log(validationResult(req).isEmpty()); 
     // console.log("-------------------------");
@@ -18,34 +24,68 @@ let postRegister = (req,res) => {
     if(!validationResult(req).isEmpty()) {
         let errors = Object.values(validationResult(req).mapped());
         errors.forEach(item => {
+            //push errors into array
             errorArr.push(item.msg)
         })
+        req.flash("error", errorArr)
         // console.log(errors)
-        console.log("Error:", errorArr)
+        // console.log("Error:", errorArr)
         return res.redirect("/loginRegister")
     } 
     try {
-        let userItem = {
-            username: req.body.username,
-            password: req.body.password
-        }
         //successfully create a new user
-        userDB.push(userItem)
-        console.log(req.body)
-
-        authSer.register(req.body.username,req.body.password) 
+        let createUserSuccess = await authSer.register(req.body.username,req.body.password) ;
+        successArr.push(createUserSuccess);
+        req.flash("success", successArr)
         return res.redirect("/loginRegister");
     } catch(error) {
         // fail to create a new user
         errorArr.push(error)
-        console.log("Error:", errorArr)
+        req.flash("error", errorArr)
         return res.redirect("/loginRegister");
     }
     
     
 }
+let getLogOut = (req,res, next) => {
+    //remove session passport
+    req.logout(function(err){
+        if(err) {
+            return next(err)
+        } 
+        req.flash("success", transSuccess.logoutSuccess);  
+        return res.redirect("/loginRegister")  
+    }); 
+    
+    
+}
+let checkLoggedIn = (req,res,next) => {
+    if(!req.isAuthenticated()) {
+        return res.redirect("/loginRegister")
+    }
+    next();
+}
+let checkLoggedOut = (req,res,next) => {
+    if(req.isAuthenticated()) {
+        return res.redirect("/profile")
+    }
+    next();
+}
+
+let checkTokenUpdated = async (username) => {
+    let user = await userModel.findByUsername(username);
+    if (user.tokenUpdated) {
+        return true
+    } else {
+        return false
+    }
+}
     
 module.exports = {
     getLoginRegister: getLoginRegister,
-    postRegister: postRegister
+    getLogOut: getLogOut,
+    postRegister: postRegister,
+    checkLoggedIn: checkLoggedIn,
+    checkLoggedOut: checkLoggedOut,
+    checkTokenUpdated: checkTokenUpdated
 }

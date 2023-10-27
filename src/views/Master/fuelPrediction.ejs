@@ -5,9 +5,24 @@
     <title>Fuel Prediction</title>
     <link rel="shortcut icon" href="images/logo/logo.webp" />
     <link rel="stylesheet" href="css/fuelPrediction.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
     <script src="js/fuelTabSwitch.js" type="text/javascript"></script>
 </head>
 <body>
+  <div class="setting" style="width: 100%; text-align: left;">
+    <div class="dropdown">
+      <button class="btn">
+        <i class="fa fa-cog" aria-hidden="true" style="font-size: 20px;"></i>
+      </button>
+      <div class="dropdown-options">
+        <a href="http://localhost:8017/profile" style="color: black; text-decoration: none;">Update Profile</a>
+        <hr>
+        <a href="/logout" style="color: black; text-decoration: none;">Logout</a>
+      </div>
+    </div>
+  </div>
+  
     <div class="button-container">
         <button class="nav-button" onclick="openTab(event, 'Form')">Fuel Quote Form</button>
         <button class="nav-button" onclick="openTab(event, 'History')">Fuel Quote History</button>
