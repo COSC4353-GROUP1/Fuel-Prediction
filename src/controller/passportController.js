@@ -23,6 +23,7 @@ let InitPassportLocal = () => {
                 if (!checkPassword) {
                     return done(null, false, req.flash("error", transError.login_failed))
                 } else {
+                    req.session.userId = user._id; 
                     return done(null, user, req.flash("success", transSuccess.loginSuccess(user.username)))
                 }
             } catch (error) {
@@ -33,10 +34,13 @@ let InitPassportLocal = () => {
     ))
     // save userId session
     passport.serializeUser((user,done) => {
+        
         done(null, user._id);
+        
     });
 
     passport.deserializeUser((id, done) => {
+        
         userModel.findUserById(id) 
         .then(user => {
             return done(null, user);
