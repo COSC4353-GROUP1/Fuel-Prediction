@@ -53,28 +53,3 @@ module.exports = mongoose.model ("user",UserSchema);
 
 
 
-UserSchema.method.createData = function(inputData, callback){
-               
-     userData= new userTable(inputData);
-     userData.save(function(err, data){
-       if (err) throw err;
-        return callback(data);
-     });
-  }
-
-UserSchema.methods.clearProfile = function() {
-  // reset fields
-  this.set({
-    name: '',
-    gender: '',
-    address_1: '',
-    address_2: '',
-    city: '',
-    state: '',
-    zipcode: '',
-    phoneNumber: ''
-  });
-  
-  return this.save();
-}
-module.exports = mongoose.model("User", UserSchema);

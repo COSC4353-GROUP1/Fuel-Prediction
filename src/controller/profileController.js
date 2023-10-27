@@ -1,20 +1,54 @@
 const User = require('../models/userModel');
-let getProfile = (req,res) => {
-    return res.render("auth/profile");
-    
+
+const getProfile = async (req, res) => {
+
+  
+  
+  const user = await User.findOne(req.body.username);
+  
+  console.log(user);
+  if(!user) {
+    return res.status(400).send('User not found');
+  }
+  res.render('auth/profile', {
+    user: user 
+  });
+  
 }
+
+
 
 // GET profile
 
-const profileUpdate = async(req,res)=>{
+
+let profileUpdate = async(req,res)=>{
     try {
-    const { name, gender, address_1, address_2, city, state, zipcode, phone } = req.body;
-    const user = await User( {
-        name, gender, address_1, address_2, city, state, zipcode, phone
-      }, { new: true });
-      
-      res.json(user);
-      
+    
+    // Get user id from session
+    const userId = req.user.id;
+
+    // Validate request 
+    if(!userId) {
+      return res.status(401).send('Unauthorized');
+    }
+
+    // Update user document
+    const user = await User.findByIdAndUpdate(userId, {
+      username: req.body.name,
+      gender: req.body.gender,
+      address_1: req.body.address_1,
+      address_2: req.body.address_2,
+      city: req.body.city,
+      state: req.body.state,
+      zipcode: req.body.zipcode,
+      phone: req.body.phone
+    }, 
+    {
+      new: true // return updated doc
+    });
+    req.flash('success', 'Profile updated successfully!'); 
+
+    res.redirect('/profile');
 
     } catch (err) {
       console.error(err);
