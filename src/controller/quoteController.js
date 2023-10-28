@@ -1,9 +1,14 @@
+const { get } = require('mongoose');
 const Quote = require('../models/quoteModel');
+let getQuote = (req,res) => {
+  return res.render("Master/fuelPrediction");
+}
+
 const createQuote = async(req,res)=>{
     try {
-    const { gallons, inState, isCustomer, profitMargin } = req.body;
+    const { gallons, deliveryAddress, deliveryDate, suggestedPrice, totalCost } = req.body;
     const quote = await Quote( {
-        gallons, inState, isCustomer, profitMargin
+        gallons, deliveryAddress, deliveryDate, suggestedPrice, totalCost
       }, { new: true });
       
       res.json(quote);
@@ -17,5 +22,5 @@ const createQuote = async(req,res)=>{
 
     
 module.exports = {
-    createQuote: createQuote
+    getQuote: getQuote, createQuote
 };

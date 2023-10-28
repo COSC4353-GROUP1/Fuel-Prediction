@@ -7,12 +7,11 @@ import bcrypt from "bcrypt"
 const { Schema } = mongoose;
 
 let QuoteSchema = new Schema({
-    state: String,
-    inState: {type:Boolean, default: true},
-    isCustomer: {type:Boolean, default: false},
+    deliveryAddress: {type:Boolean, default: true},
+    deliveryDate: NativeDate,
+    suggestedPrice : {type:Boolean, default: false},
     gallons: {type: Number, default: null},
-    profitMargin: {type: Number, default: null},
-    quote: {type: Number, default: null},
+    totalCost: {type: Number, default: null},
     tokenUpdated: {type:Boolean, default: false},
     createAt: {type: Number, default: Date.now},
     updateAt: {type: Number, default: Date.now},
@@ -28,9 +27,6 @@ QuoteSchema.statics = {
   // function create new use in mongoose
     createNew(item) {
         return this.create(item);
-    },
-    findByState(state) {
-      return this.findOne({"state": state}).exec();
     }
 }
 /*QuoteSchema.methods = {
