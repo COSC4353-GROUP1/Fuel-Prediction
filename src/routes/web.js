@@ -32,3 +32,5 @@ let InitRoute = (app) => {
     return app.use("/",router)
 }
 module.exports = InitRoute;
+
+router.post('/fuelPredictionData', auth.checkLoggedIn, fuelPrediction.postFuelPredictionData);

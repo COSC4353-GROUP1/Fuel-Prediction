@@ -1,5 +1,3 @@
-import UserModel from "./../models/quoteModel"
-
 function openTab(evt, tabName) {
   var i, tabcontent, navbutton;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -14,15 +12,41 @@ function openTab(evt, tabName) {
   evt.currentTarget.style.backgroundColor = "#007bff";
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('form').addEventListener('submit', function (e) {
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('form').addEventListener('submit', async function(e) {
       e.preventDefault();
+
       var gallons = document.getElementById('gallons').value;
+      var address = document.getElementById('address').value;
+      var deliveryDate = document.getElementById('delivery-date').value;
       var suggestedPrice = document.getElementById('suggested-price').value;
       var totalDue = gallons * suggestedPrice;
 
       document.getElementById('total-due').value = totalDue.toFixed(2);
       addToHistory(gallons, suggestedPrice, totalDue);
+
+      try {
+          const response = await fetch('/fuelPredictionData', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  gallons,
+                  address,
+                  deliveryDate,
+                  suggestedPrice,
+                  totalDue
+              }),
+          });
+
+          const data = await response.json();
+          if (!data.success) {
+              console.error('Error storing data:', data.message);
+          }
+      } catch (error) {
+          console.error('Fetch error:', error);
+      }
   });
 });
 
@@ -34,31 +58,4 @@ function addToHistory(gallons, pricePerGallon, totalDue) {
   row.insertCell(2).innerText = document.getElementById('delivery-date').value;
   row.insertCell(3).innerText = `$${pricePerGallon}`;
   row.insertCell(4).innerText = `$${totalDue.toFixed(2)}`;
-/*
-  //temp till we calculate
-  let profitMargin=0;
-  //Create form
-  let quoteForm = {
-    inState: inState,
-    existingCustomer: isCustomer,
-    gallons: gallons,
-    profitMargin: profitMargin,
-    quote: calcPrice(inState, isCustomer, gallons, profitMargin)
-  };
-  //Insert form to db
-  const result = quoteModel.createNew(quoteForm);*/
 }
-
-/*inState: in-state or out-of-state boolean for client location
-isCustomer: boolean, does the customer have previous purchaces?(fuel quote history)
-gallons: amount of gallons being requested by client, int, pull from fuel quote form
-profitMargin: further details later, as this likely needs to be calculated with information we dont have*/
-function calcPrice(inState, isCustomer, gallons, profitMargin){
-  //temp price
-  let suggestedPrice=0;
-  //various calculations to find suggested price based on parameters
-  return suggestedPrice;
-}
-/*module.exports = {
-  addToHistory: addToHistory
-}*/
