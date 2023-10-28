@@ -1,4 +1,5 @@
 body {
+  
   height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -7,10 +8,9 @@ body {
   font-weight: 400;
   background-image: url("../images/background/fuel_prediction_background.jpg");
   background-size: cover;
-  background-repeat: no-repeat; 
+  background-repeat: none;
   color: black;
 }
-
 .tab button {
   background-color: #595757;
   color: white;
@@ -20,6 +20,7 @@ body {
   padding: 10px 20px;
 }
 
+/* Style tab content */
 .tabcontent {
   display: none;
   padding: 20px;
@@ -47,7 +48,7 @@ input[type="date"] {
   border-radius: 5px;
 }
 
-button[type="submit"] {
+button[type="button"] {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -57,12 +58,13 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-button[type="submit"]:hover {
+button[type="button"]:hover {
   background-color: #0062cc;
 }
 
-#History { 
-  background-color: white;
+#quote-history {
+  width: 800px;
+  margin: 0 auto;
 }
 
 table {
@@ -81,15 +83,9 @@ th {
   color: #fff;
 }
 
-table tr:nth-child(odd) {
-  background-color: #ffffff;
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
-
-table tr:nth-child(even) {
-  background-color: #b3e0ff;
-  color: #333; 
-}
-
 .button-container {
   text-align: center;
   margin-bottom: 20px;
@@ -108,7 +104,6 @@ table tr:nth-child(even) {
   position: relative;
   height: 100px;
 }
-
 .dropdown-options {
   display: none;
   position: absolute;
@@ -116,8 +111,10 @@ table tr:nth-child(even) {
   text-align: left;
   width: 150px;
   margin-top: 5px;
+
 }
 
-.dropdown:hover .dropdown-options {
+.dropdown:hover .dropdown-options{
   display: block;
 }
+

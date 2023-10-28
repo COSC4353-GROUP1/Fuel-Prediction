@@ -29,8 +29,11 @@ let InitRoute = (app) => {
     }))
    
     router.post('/updateProfile', auth.checkLoggedIn, profile.profileUpdate);
+
+    router.post("/fuelPredictionData", auth.checkLoggedIn, fuelPrediction.postFuelPredictionData);
+
     return app.use("/",router)
 }
 module.exports = InitRoute;
 
-router.post('/fuelPredictionData', auth.checkLoggedIn, fuelPrediction.postFuelPredictionData);
+

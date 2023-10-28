@@ -6,7 +6,10 @@
     <link rel="shortcut icon" href="images/logo/logo.webp" />
     <link rel="stylesheet" href="css/fuelPrediction.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <script src="bower_components/AlertifyJS/build/alertify.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
+    <script src="js/postFuelData.js" type="text/javascript"></script>
     <script src="js/fuelTabSwitch.js" type="text/javascript"></script>
 </head>
 <body>
@@ -35,19 +38,20 @@
           <label for="gallons">Gallons Requested:</label>
           <input type="number" id="gallons" name="gallons" required>
 
-          <label for="address">Delivery Address:</label>
-          <input type="text" id="address" name="address" required>
+          <label for="delivery_address">Delivery Address:</label>
+          <input type="text" id="delivery_address" name="delivery_address" required>
 
-          <label for="delivery-date">Delivery Date:</label>
-          <input type="date" id="delivery-date" name="delivery-date" required>
+          <label for="delivery_date">Delivery Date:</label>
+          <input type="date" id="delivery_date" name="delivery_date" required>
 
-          <label for="suggested-price">Suggested Price / Gallon:</label>
-          <input type="number" id="suggested-price" name="suggested-price" required>
+          <label for="suggested_price">Suggested Price / Gallon:</label>
+          <input type="number" id="suggested_price" name="suggested_price" required>
 
-          <label for="total-due">Total Amount Due:</label>
-          <input type="number" id="total-due" name="total-due" readonly>
+          <label for="total_due">Total Amount Due:</label>
+          <input type="number" id="total_due" name="total_due" readonly>
 
-          <button type="submit">Submit Quote</button>
+          <button style="margin: 2px 0px 2px 0px" id="get_quote" type="button">Get Quote</button>
+          <button id="submit_quote" type="button">Submit Quote</button>
       </form>
   </div>
 </div>
