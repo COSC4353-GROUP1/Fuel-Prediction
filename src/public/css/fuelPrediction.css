@@ -61,9 +61,8 @@ button[type="submit"]:hover {
   background-color: #0062cc;
 }
 
-#quote-history {
-  width: 800px;
-  margin: 0 auto;
+#History { 
+  background-color: white;
 }
 
 table {
