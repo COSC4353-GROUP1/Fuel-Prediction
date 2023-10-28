@@ -1,3 +1,5 @@
+import QuoteModel from "./../models/quoteModel"
+
 function openTab(evt, tabName) {
   var i, tabcontent, navbutton;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -39,6 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
                   totalDue
               }),
           });
+          /*let quoteItem ={
+            gallons: gallons,
+            deliveryAddress: address,
+            deliveryDate: deliveryDate,
+            suggestedPrice: suggestedPrice,
+            totalCost: totalDue
+          };
+          let quote = await QuoteModel.createNew(quoteItem)
+          resolve(quote.sucess)*/
 
           const data = await response.json();
           if (!data.success) {
@@ -59,3 +70,14 @@ function addToHistory(gallons, pricePerGallon, totalDue) {
   row.insertCell(3).innerText = `$${pricePerGallon}`;
   row.insertCell(4).innerText = `$${totalDue.toFixed(2)}`;
 }
+
+/*inState: in-state or out-of-state boolean for client location
+isCustomer: boolean, does the customer have previous purchaces?(fuel quote history)
+gallons: amount of gallons being requested by client, int, pull from fuel quote form
+profitMargin: further details later, as this likely needs to be calculated with information we dont have*/
+function calcPrice(inState, isCustomer, gallons, profitMargin){
+    //temp price
+    let suggestedPrice=0;
+    //various calculations to find suggested price based on parameters
+    return suggestedPrice;
+  }
