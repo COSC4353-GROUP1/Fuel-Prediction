@@ -1,19 +1,9 @@
 const User = require('../models/userModel');
 
-const getProfile = async (req, res) => {
-
-  
-  
-  const user = await User.findOne(req.body.username);
-  
-  console.log(user);
-  if(!user) {
-    return res.status(400).send('User not found');
-  }
-  res.render('auth/profile', {
-    user: user 
+let getProfile = (req,res) => {
+  return res.render("auth/profile",{
+      user : req.user,
   });
-  
 }
 
 
@@ -40,7 +30,7 @@ let profileUpdate = async(req,res)=>{
       address_2: req.body.address_2,
       city: req.body.city,
       state: req.body.state,
-      zipcode: req.body.zipcode,
+      zipCode: req.body.zipCode,
       phone: req.body.phone
     }, 
     {
@@ -48,7 +38,7 @@ let profileUpdate = async(req,res)=>{
     });
     req.flash('success', 'Profile updated successfully!'); 
 
-    res.redirect('/profile');
+    res.redirect('/fuelPrediction');
 
     } catch (err) {
       console.error(err);
@@ -59,5 +49,5 @@ let profileUpdate = async(req,res)=>{
     
 module.exports = {
     getProfile: getProfile,
-    profileUpdate
+    profileUpdate: profileUpdate
 };

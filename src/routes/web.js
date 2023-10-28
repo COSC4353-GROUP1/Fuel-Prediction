@@ -28,7 +28,7 @@ let InitRoute = (app) => {
         failureFlash: true
     }))
    
-    router.post('/updateProfile', auth.checkLoggedIn, profile.profileUpdate);
+    router.post("/updateProfile", auth.checkLoggedIn, profile.profileUpdate);
 
     router.post("/fuelPredictionData", auth.checkLoggedIn, fuelPrediction.postFuelPredictionData);
 
