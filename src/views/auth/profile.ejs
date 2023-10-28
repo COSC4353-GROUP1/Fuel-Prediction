@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,24 +19,25 @@
 			<div class="profile-form">
 				<div class="profile-title">Complete Your Profile Information</div>
 				<hr style= "border: solid 1px">
+				
 				<form style="display:grid" id="profileForm" method="post" action="/updateProfile">
 					<!-- "fullname-->
 					<div class="form-group">
 						<label class="col-md-2 control-label">Fullname</label>
 							<div class="col-md-9">
-									<input id="input-change-username" class="form-control" type="text" name="name" value="" maxlength="50" placeholder="Enter Fullname">
+									<input id="input-change-username" class="form-control" type="text" value="<%= user.username %>" name="name" maxlength="50" >
 							</div>
 					</div>
 					<!-- Gender-->
 					<div class="form-group">
 						<label class="col-lg-2 control-label">Gender</label>
 						<div class="col-lg-9">
-							<label class="col-lg-2 inline">male
-									<input id="input-change-gender-male" type="radio" name="gender" value="male" required>
+							<label class="col-lg-2 inline">Male
+									<input id="input-change-gender-male" type="radio" name="gender" value="male"<% if(user.gender === 'male') { %>checked<% } %> required>
 									<span class="checkmark"></span>
 							</label>
 							<label class="">Female
-									<input id="input-change-gender-female"type="radio" name="gender" value="female" required>
+									<input id="input-change-gender-female"type="radio" name="gender" value="female" <% if(user.gender === 'female') { %>checked<% } %> required>
 									<span class="checkmark"></span>
 							</label>
 						</div>
@@ -44,7 +46,7 @@
 					<div class="form-group">
 						<label class="col-lg-2 control-label">Address 1</label>
 						<div class="col-lg-9">
-						<input id="input-change-address_1" class="form-control" type="text" name="address_1" value="" maxlength="100" placeholder="Enter address 1">
+						<input id="input-change-address_1" class="form-control" type="text" name="address_1" value="<%= user.address_1 %>" maxlength="100" placeholder="Enter address 1">
 						</div>
 					</div>
 					
@@ -52,7 +54,7 @@
 					<div class="form-group">
 						<label class="col-lg-2 control-label">Address 2</label>
 						<div class="col-lg-9">
-						<input id="input-change-address_2"class="form-control" type="text" name="address_2" value="" maxlength="100" placeholder="Enter address 2">
+						<input id="input-change-address_2"class="form-control" type="text" name="address_2" value="<%= user.address_2 %>" maxlength="100" placeholder="Enter address 2">
 					</div>
 					</div>
 					
@@ -60,7 +62,7 @@
 					<div class="form-group">
 						<label class="col-lg-2 control-label">City</label>
 						<div class="col-lg-9">
-						<input id="input-change-city"class="form-control" type="text" name="city" value="" maxlength="100" placeholder="Enter city">
+						<input id="input-change-city"class="form-control" type="text" name="city" value="<%= user.city %>" maxlength="100" placeholder="Enter city">
 						</div>
 					</div>	
 					<!-- State-->
@@ -69,58 +71,17 @@
 						<div class="col-lg-9">
 						<!--- United States states -->
 							<select name="state">
-								<option>SELECT STATE</option>
-								<option value="AL">AL</option>
-								<option value="AK">AK</option>
-								<option value="AZ">AZ</option>
-								<option value="AR">AR</option>
-								<option value="CA">CA</option>
-								<option value="CO">CO</option>
-								<option value="CT">CT</option>
-								<option value="DE">DE</option>
-								<option value="DC">DC</option>
-								<option value="FL">FL</option>
-								<option value="GA">GA</option>
-								<option value="HI">HI</option>
-								<option value="ID">ID</option>
-								<option value="IL">IL</option>
-								<option value="IN">IN</option>
-								<option value="IA">IA</option>
-								<option value="KS">KS</option>
-								<option value="KY">KY</option>
-								<option value="LA">LA</option>
-								<option value="ME">ME</option>
-								<option value="MD">MD</option>
-								<option value="MA">MA</option>
-								<option value="MI">MI</option>
-								<option value="MN">MN</option>
-								<option value="MS">MS</option>
-								<option value="MO">MO</option>
-								<option value="MT">MT</option>
-								<option value="NE">NE</option>
-								<option value="NV">NV</option>
-								<option value="NH">NH</option>
-								<option value="NJ">NJ</option>
-								<option value="NM">NM</option>
-								<option value="NY">NY</option>
-								<option value="NC">NC</option>
-								<option value="ND">ND</option>
-								<option value="OH">OH</option>
-								<option value="OK">OK</option>
-								<option value="OR">OR</option>
-								<option value="PA">PA</option>
-								<option value="RI">RI</option>
-								<option value="SC">SC</option>
-								<option value="SD">SD</option>
-								<option value="TN">TN</option>
-								<option value="TX">TX</option>
-								<option value="UT">UT</option>
-								<option value="VT">VT</option>
-								<option value="VA">VA</option>
-								<option value="WA">WA</option>
-								<option value="WV">WV</option>
-								<option value="WI">WI</option>
-								<option value="WY">WY</option>
+								
+								<option <% if(!user.state) { %>selected<% } %>>Choose state</option>
+
+  									<% for(let option of ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+									  'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 
+									  'NM', 'NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']) { %>
+
+    								<option value="<%= option %>" <% if(user.state === option) { %>selected<% } %>><%= option %></option>
+  
+ 								 <% } %>
+								
 							</select>
 						</div>     
 					</div>
@@ -129,7 +90,7 @@
 					<div class="form-group">
 						<label class="col-lg-2 control-label">ZipCode</label>
 						<div class="col-lg-9">
-							<input id="input-change-zipcode"class="form-control" type="text" name="zipcode" value="" maxlength="9" minlength ="5" placeholder="Enter ZipCode">
+							<input id="input-change-zipcode"class="form-control" type="text" name="zipcode" value="<%= user.zipcode %>" maxlength="9" minlength ="5" placeholder="Enter ZipCode">
 						</div>
 					</div>
 					
@@ -137,7 +98,7 @@
 					<div class="form-group">
 						<label class="col-lg-2 control-label">Phone Number</label>
 						<div class="col-lg-9">
-							<input id="input-change-phone" class="form-control" type="text" name="phone" value="" placeholder="Enter phone number">
+							<input id="input-change-phone" class="form-control" type="text" name="phone" value="<%= user.phone %>" placeholder="Enter phone number">
 						</div>
 					</div>
 					<!-- button update and cancel-->
