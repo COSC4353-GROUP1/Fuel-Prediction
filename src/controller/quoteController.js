@@ -1,8 +1,4 @@
-const { get } = require('mongoose');
 const Quote = require('../models/quoteModel');
-let getQuote = (req,res) => {
-  return res.render("Master/fuelPrediction");
-}
 
 const createQuote = async(req,res)=>{
     try {
@@ -18,9 +14,18 @@ const createQuote = async(req,res)=>{
       console.error(err);
       res.status(500).send('Server error');
     }
+  const user = await User.findOne(req.body.username);
+  
+  console.log(quote);
+  if(!quote) {
+    return res.status(400).send('Failed to sumbit form');
+  }
+  res.render('Master/fuelPrediction', {
+    quote: quote 
+  });
 }
 
     
 module.exports = {
-    getQuote: getQuote, createQuote
+    createQuote: createQuote
 };
