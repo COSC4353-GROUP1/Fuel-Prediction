@@ -45,13 +45,14 @@
           <input type="date" id="delivery_date" name="delivery_date" required>
 
           <label for="suggested_price">Suggested Price / Gallon:</label>
-          <input type="number" id="suggested_price" name="suggested_price" required>
+          <input type="number" id="suggested_price" name="suggested_price" required readonly>
 
           <label for="total_due">Total Amount Due:</label>
           <input type="number" id="total_due" name="total_due" readonly>
 
-          <button style="margin: 2px 0px 2px 0px" id="get_quote" type="button">Get Quote</button>
-          <button id="submit_quote" type="button">Submit Quote</button>
+          <button style="margin: 2px 0px 2px 0px" type="reset">Clear</button>
+          <button style="margin: 2px 0px 2px 0px" id="get_quote" type="button" disabled>Get Quote</button>
+          <button style="margin: 2px 0px 2px 0px" id="submit_quote" type="button" disabled>Submit Quote</button>
       </form>
   </div>
 </div>

@@ -61,6 +61,19 @@ button[type="button"] {
 button[type="button"]:hover {
   background-color: #0062cc;
 }
+button[type="reset"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="reset"]:hover {
+  background-color: #0062cc;
+}
 
 #quote-history {
   width: 800px;
@@ -108,10 +121,14 @@ tr:nth-child(even) {
   display: none;
   position: absolute;
   overflow: auto;
-  text-align: left;
+  text-align: center;
   width: 150px;
   margin-top: 5px;
-
+  background-color: #49b4de;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 .dropdown:hover .dropdown-options{

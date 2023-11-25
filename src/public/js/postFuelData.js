@@ -53,6 +53,57 @@ $(function() {
         }
         
     });
+    const gallonsInput = document.getElementById("gallonsInput");
+    const addressInput = document.getElementById("addressInput");
+    const deliveryDateInput = document.getElementById("deliveryDateInput");
+    const getQuoteButton = document.getElementById("getQuoteButton");
+    const submitButton = document.getElementById("submitButton");
+
+    gallonsInput.addEventListener("input", () => {
+        const gallonsValue = gallonsInput.value.trim();
+        const addressValue = addressInput.value.trim();
+        const deliveryDateValue = deliveryDateInput.value.trim();
+
+        if (gallonsValue.length > 0 && addressValue.length > 0 && Date.parse(deliveryDateInput)) {
+            // Enable buttons if conditions are met
+            getQuoteButton.disabled = false;
+            submitButton.disabled = false;
+        } else {
+            // Disable buttons otherwise
+            getQuoteButton.disabled = true;
+            submitButton.disabled = true;
+        }
+    });
+    addressInput.addEventListener("input", () => {
+        const gallonsValue = gallonsInput.value.trim();
+        const addressValue = addressInput.value.trim();
+        const deliveryDateValue = deliveryDateInput.value.trim();
+
+        if (gallonsValue.length > 0 && addressValue.length > 0 && Date.parse(deliveryDateInput)) {
+            // Enable buttons if conditions are met
+            getQuoteButton.disabled = false;
+            submitButton.disabled = false;
+        } else {
+            // Disable buttons otherwise
+            getQuoteButton.disabled = true;
+            submitButton.disabled = true;
+        }
+    });
+    deliveryDateInput.addEventListener("input", () => {
+        const gallonsValue = gallonsInput.value.trim();
+        const addressValue = addressInput.value.trim();
+        const deliveryDateValue = deliveryDateInput.value.trim();
+
+        if (gallonsValue.length > 0 && addressValue.length > 0 && Date.parse(deliveryDateInput)) {
+            // Enable buttons if conditions are met
+            getQuoteButton.disabled = false;
+            submitButton.disabled = false;
+        } else {
+            // Disable buttons otherwise
+            getQuoteButton.disabled = true;
+            submitButton.disabled = true;
+        }
+    });
 
     // $("#get_quote").on("click",function(){
 
