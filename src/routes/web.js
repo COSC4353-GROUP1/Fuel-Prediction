@@ -15,7 +15,6 @@ let router = express.Router();
 let InitRoute = (app) => {
     router.get("/loginRegister", auth.checkLoggedOut, auth.getLoginRegister);
     router.get("/profile", auth.checkLoggedIn, profile.getProfile);
-    router.get("/fuelPrediction", auth.checkLoggedIn, fuelPrediction.getFuelPredictionController);
     router.get("/logout", auth.checkLoggedIn, auth.getLogOut)
 
     router.post("/register", auth.checkLoggedOut, authValid.register, auth.postRegister)
@@ -30,7 +29,10 @@ let InitRoute = (app) => {
    
     router.post("/updateProfile", auth.checkLoggedIn, profile.profileUpdate);
 
-    router.post("/fuelPredictionData", auth.checkLoggedIn, fuelPrediction.postFuelPredictionData);
+    router.post("/addNewInput",auth.checkLoggedIn, fuelPrediction.calculateInput)
+    router.post("/submitFormData",auth.checkLoggedIn, fuelPrediction.submitFormDataController)
+
+    router.get("/fuelPrediction",auth.checkLoggedIn, fuelPrediction.fuelHistoryController)
 
     return app.use("/",router)
 }

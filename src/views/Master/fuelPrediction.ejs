@@ -35,44 +35,53 @@
 <div id="Form" class="tabcontent" style="display:block">
   <div id="quote-form">
       <form>
-          <label for="gallons">Gallons Requested:</label>
-          <input type="number" id="gallons" name="gallons" required>
+        <label for="gallons">Gallons Requested:</label>
+        <input type="number" id="gallons" name="gallons" placeholder="positive numbers only (> 0)"  min="0" required>
+  
+        <label for="delivery_address">Delivery Address:</label>
+        <input type="text" id="delivery_address" name="delivery_address" placeholder="address, city, state, zipcode" value="" required >
+  
+        <label for="delivery_date">Delivery Date:</label>   
+        <input type="date" id="delivery_date" name="delivery_date" pattern="\d{2}/\d{2}/\d{4}" placeholder="MM/DD/YYYY" required>
+  
+        <label for="suggested_price">Suggested Price / Gallon:</label>
+        <input type="number" id="suggested_price" name="suggested_price" readonly value="">
 
-          <label for="delivery_address">Delivery Address:</label>
-          <input type="text" id="delivery_address" name="delivery_address" required>
+        <label for="total_due">Total Amount Due:</label>
+        <input type="number" id="total_due" name="total_due" readonly>
 
-          <label for="delivery_date">Delivery Date:</label>
-          <input type="date" id="delivery_date" name="delivery_date" required>
-
-          <label for="suggested_price">Suggested Price / Gallon:</label>
-          <input type="number" id="suggested_price" name="suggested_price" required readonly>
-
-          <label for="total_due">Total Amount Due:</label>
-          <input type="number" id="total_due" name="total_due" readonly>
-
-          <button style="margin: 2px 0px 2px 0px" type="reset">Clear</button>
-          <button style="margin: 2px 0px 2px 0px" id="get_quote" type="button" disabled>Get Quote</button>
-          <button style="margin: 2px 0px 2px 0px" id="submit_quote" type="button" disabled>Submit Quote</button>
+        <button style="margin: 2px 0px 2px 0px" type="button" id="clear_quote">Clear Quote</button>
+        <button style="margin: 2px 0px 2px 0px" id="get_quote" type="button" disabled>Get Quote</button>
+        <button style="margin: 2px 0px 2px 0px" id="submit_quote" type="button" disabled>Submit Quote</button>
       </form>
   </div>
 </div>
 
       
-      <div id="History" class="tabcontent">
-        <table>
-          <thead>
-            <tr>
-              <th>Gallons</th>
-              <th>Delivery Address</th>
-              <th>Delivery Date</th>
-              <th>Price / Gallon</th>
-              <th>Total Due</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table> 
-      </div>
+<div id="History" class="tabcontent">
+  <table>
+    <thead>
+      <tr>
+        <th>Gallons</th>
+        <th>Delivery Address</th>
+        <th>Delivery Date</th>
+        <th>Price / Gallon</th>
+        <th>Total Due</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% userInput.forEach(function(data){ %>
+        <tr>
+            <td><%= data.gallons %></td>
+            <td><%= data.delivery_address %></td>
+            <td><%= data.delivery_date %></td>
+            <td><%= data.suggested_price %></td>
+            <td><%= data.total_amount_due %></td>
+        </tr>
+    <% }); %>
+    </tbody>
+  </table> 
+</div>
       
 
 </body>

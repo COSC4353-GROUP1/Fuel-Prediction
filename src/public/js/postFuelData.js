@@ -1,28 +1,54 @@
 
+function updateButtons() {
+    var gallonsValue = document.getElementById("gallons").value;
+    var deliveryAddressValue = document.getElementById("delivery_address").value;
+    var deliveryDateValue = document.getElementById("delivery_date").value;
+
+    var getQuoteBtn = document.getElementById("get_quote");
+    var submitQuoteBtn = document.getElementById("submit_quote");
+
+    // Enable buttons only if there are values in all required fields
+    getQuoteBtn.disabled = !gallonsValue || !deliveryAddressValue || !deliveryDateValue;
+    submitQuoteBtn.disabled = !gallonsValue || !deliveryAddressValue || !deliveryDateValue;
+}
+
 let originUserInput = {};
 let userInput = {};
 
 
-function getUserInput() {
-    $("#gallons").bind("change",function(){
+function updateUserInput() {
+    $("#gallons").on("change",function(){
         userInput.gallons = $(this).val();    
     });
-    $("#delivery_address").bind("change",function(){
+    $("#delivery_address").on("change",function(){
         userInput.delivery_address = $(this).val();
     })
-    $("#delivery_date").bind("change",function(){
+    $("#delivery_date").on("change",function(){
         userInput.delivery_date = $(this).val();
     })
+    $("#suggested_price").on("change",function(){
+        userInput.suggested_price = $(this).val();
+    })
+    $("#total_due").on("change",function(){
+        userInput.total_due = $(this).val();
+    })
 }
-function callPostUserInput() {
+function callUpdateUserInput() {
     $.ajax({
-        url: "/fuelPredictionData",
+        url: "/addNewInput",
         type: "post",
         data: userInput,
-        success: function(){
+        success: function(data){
+            // Update HTML with the received data
+            $("#suggested_price").val(data.suggested_price);
+            $("#total_due").val(data.total_due);
+
+            // Update userInput with the received data
+            userInput = Object.assign(userInput, data);
+
             //update origin UserInfo
             originUserInput = Object.assign(originUserInput, userInput);
-            console.log(originUserInput);
+            console.log("userInput: ",originUserInput)
             
         },
         error: function(error){
@@ -34,155 +60,90 @@ function callPostUserInput() {
     }) 
 }
 
+function submitFormData() {
+    $.ajax({
+        url: "/submitFormData", // Change the URL to the correct endpoint on your server
+        type: "post",
+        data: {
+            gallons: userInput.gallons,
+            delivery_address: userInput.delivery_address,
+            delivery_date: userInput.delivery_date,
+            suggested_price: $("#suggested_price").val(),
+            total_due: $("#total_due").val(),
+        },
+        success: function (response) {
+            // Handle the success response from the server if needed
+            console.log("Form submitted successfully:", response);
+        },
+        error: function (error) {
+            // Display error
+            console.log("Error submitting form:", error);
+        },
+    });
+}
+function showAlert(message) {
+    Swal.fire({
+        text: message,
+        icon: 'error',
+    });
+}
+
+
 $(function() {
-    originUserInput = {
+    originInput = {
         gallons: $("#gallons").val(),
         delivery_address: $("#delivery_address").val(),
         delivery_date: $("#delivery_date").val(),  
+        suggested_price: $("#suggested_price").val(),
+        total_due: $("#total_due").val()
     }
-    console.log(originUserInput);
-    getUserInput()
-    $("#get_quote").bind("click",function(){
+    console.log(originInput);
+    updateUserInput()
+    $("#get_quote").on("click",function(){
         if($.isEmptyObject(userInput)){
-            alertify.notify("you need to make some changes before updating your information","error",7);
+            showAlert("Please, enter all the fields")
             return false;
         }
 
         if(!$.isEmptyObject(userInput)) {
-            callPostUserInput();
+            callUpdateUserInput();
         }
         
     });
-    const gallonsInput = document.getElementById("gallonsInput");
-    const addressInput = document.getElementById("addressInput");
-    const deliveryDateInput = document.getElementById("deliveryDateInput");
-    const getQuoteButton = document.getElementById("getQuoteButton");
-    const submitButton = document.getElementById("submitButton");
 
-    gallonsInput.addEventListener("input", () => {
-        const gallonsValue = gallonsInput.value.trim();
-        const addressValue = addressInput.value.trim();
-        const deliveryDateValue = deliveryDateInput.value.trim();
+    $("#submit_quote").on("click", function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        if ($.isEmptyObject(userInput)) {
+            showAlert("Please, enter all the fields")
+            return false;
+        }
 
-        if (gallonsValue.length > 0 && addressValue.length > 0 && Date.parse(deliveryDateInput)) {
-            // Enable buttons if conditions are met
-            getQuoteButton.disabled = false;
-            submitButton.disabled = false;
-        } else {
-            // Disable buttons otherwise
-            getQuoteButton.disabled = true;
-            submitButton.disabled = true;
+        if (!$.isEmptyObject(userInput)) {
+            submitFormData();
         }
     });
-    addressInput.addEventListener("input", () => {
-        const gallonsValue = gallonsInput.value.trim();
-        const addressValue = addressInput.value.trim();
-        const deliveryDateValue = deliveryDateInput.value.trim();
+    
 
-        if (gallonsValue.length > 0 && addressValue.length > 0 && Date.parse(deliveryDateInput)) {
-            // Enable buttons if conditions are met
-            getQuoteButton.disabled = false;
-            submitButton.disabled = false;
-        } else {
-            // Disable buttons otherwise
-            getQuoteButton.disabled = true;
-            submitButton.disabled = true;
-        }
+    // Attach the updateButtons function to input change events
+    document.getElementById('gallons').addEventListener('input', updateButtons);
+    document.getElementById('delivery_address').addEventListener('input', updateButtons);
+    document.getElementById('delivery_date').addEventListener('input', updateButtons);
+
+    $("#clear_quote").on("click",function(){
+        $("#gallons").val(function() {
+            return originInput.gallons;
+        });
+        $("#delivery_address").val(function(){
+            return originInput.delivery_address;
+        });
+        $("#delivery_date").val(function() {
+            return originInput.delivery_date;
+        });
+        $("#suggested_price").val(function(){
+            return originInput.suggested_price;
+        });
+        $("#total_due").val(function(){
+            return originInput.total_due;
+        });
     });
-    deliveryDateInput.addEventListener("input", () => {
-        const gallonsValue = gallonsInput.value.trim();
-        const addressValue = addressInput.value.trim();
-        const deliveryDateValue = deliveryDateInput.value.trim();
-
-        if (gallonsValue.length > 0 && addressValue.length > 0 && Date.parse(deliveryDateInput)) {
-            // Enable buttons if conditions are met
-            getQuoteButton.disabled = false;
-            submitButton.disabled = false;
-        } else {
-            // Disable buttons otherwise
-            getQuoteButton.disabled = true;
-            submitButton.disabled = true;
-        }
-    });
-
-    // $("#get_quote").on("click",function(){
-
-    //    $("#gallons").val(function() {
-    //     return originUserInput.gallons})
-    //    $("#delivery_address").val(function(){
-    //     return originUserInput.delivery_address})
-    //    $("#delivery_date").val(function() {
-    //     return originUserInput.delivery_date })
-    // });
 })
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.querySelector('form').addEventListener('submit', async function(e) {
-//         e.preventDefault();
-  
-//         var gallons = document.getElementById('gallons').value;
-//         var address = document.getElementById('address').value;
-//         var deliveryDate = document.getElementById('delivery-date').value;
-//         var suggestedPrice = document.getElementById('suggested-price').value;
-//         var totalDue = gallons * suggestedPrice;
-  
-//         document.getElementById('total-due').value = totalDue.toFixed(2);
-//         addToHistory(gallons, suggestedPrice, totalDue);
-  
-//         try {
-//             const response = await fetch('/fuelPredictionData', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify({
-//                     gallons,
-//                     address,
-//                     deliveryDate,
-//                     suggestedPrice,
-//                     totalDue
-//                 }),
-//             });
-//             /*let quoteItem ={
-//               gallons: gallons,
-//               deliveryAddress: address,
-//               deliveryDate: deliveryDate,
-//               suggestedPrice: suggestedPrice,
-//               totalCost: totalDue
-//             };
-//             let quote = await QuoteModel.createNew(quoteItem)
-//             resolve(quote.sucess)*/
-  
-//             const data = await response.json();
-//             if (!data.success) {
-//                 console.error('Error storing data:', data.message);
-//             }
-//         } catch (error) {
-//             console.error('Fetch error:', error);
-//         }
-//     });
-//   });
-  
-//   function addToHistory(gallons, pricePerGallon, totalDue) {
-//     var table = document.querySelector("#History tbody");
-//     var row = table.insertRow();
-//     row.insertCell(0).innerText = gallons;
-//     row.insertCell(1).innerText = document.getElementById('address').value;
-//     row.insertCell(2).innerText = document.getElementById('delivery-date').value;
-//     row.insertCell(3).innerText = `$${pricePerGallon}`;
-//     row.insertCell(4).innerText = `$${totalDue.toFixed(2)}`;
-//   }
-  
-//   /*inState: in-state or out-of-state boolean for client location
-//   isCustomer: boolean, does the customer have previous purchaces?(fuel quote history)
-//   gallons: amount of gallons being requested by client, int, pull from fuel quote form
-//   profitMargin: further details later, as this likely needs to be calculated with information we dont have*/
-//   function calcPrice(inState, isCustomer, gallons, profitMargin){
-//       //temp price
-//       let suggestedPrice=0;
-//       //various calculations to find suggested price based on parameters
-//       return suggestedPrice;
-//   }
