@@ -72,14 +72,7 @@ let checkLoggedOut = (req,res,next) => {
     next();
 }
 
-let checkTokenUpdated = async (username) => {
-    let user = await userModel.findByUsername(username);
-    if (user.tokenUpdated) {
-        return true
-    } else {
-        return false
-    }
-}
+
     
 module.exports = {
     getLoginRegister: getLoginRegister,
@@ -87,5 +80,5 @@ module.exports = {
     postRegister: postRegister,
     checkLoggedIn: checkLoggedIn,
     checkLoggedOut: checkLoggedOut,
-    checkTokenUpdated: checkTokenUpdated
+    
 }
