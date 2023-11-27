@@ -1,9 +1,23 @@
 const User = require('../models/userModel');
 
 let getProfile = (req,res) => {
-  return res.render("auth/profile",{
+  
+  if(!req.user.tokenUpdated)
+    return res.render("auth/profile",{
       user : req.user,
   });
+
+  else
+    return res.redirect("fuelPrediction");
+}
+let getProfile_updated = (req,res) => {
+  
+  
+    return res.render("auth/profile",{
+      user : req.user,
+  });
+
+ 
 }
 
 
@@ -30,12 +44,16 @@ let profileUpdate = async(req,res)=>{
       address_2: req.body.address_2,
       city: req.body.city,
       state: req.body.state,
-      zipCode: req.body.zipCode,
-      phone: req.body.phone
+      zipcode: req.body.zipcode,
+      phone: req.body.phone,
+      tokenUpdated:true
     }, 
+    
     {
       new: true // return updated doc
     });
+    
+    
     req.flash('success', 'Profile updated successfully!'); 
 
     res.redirect('/fuelPrediction');
@@ -49,5 +67,6 @@ let profileUpdate = async(req,res)=>{
     
 module.exports = {
     getProfile: getProfile,
-    profileUpdate: profileUpdate
+    profileUpdate: profileUpdate,
+    getProfile_updated:getProfile_updated
 };

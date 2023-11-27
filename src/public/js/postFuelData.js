@@ -1,7 +1,7 @@
 
+const User = require('../models/userModel');
 let originUserInput = {};
 let userInput = {};
-
 
 function getUserInput() {
     $("#gallons").bind("change",function(){
