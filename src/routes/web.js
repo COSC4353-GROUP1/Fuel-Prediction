@@ -15,6 +15,7 @@ let router = express.Router();
 let InitRoute = (app) => {
     router.get("/loginRegister", auth.checkLoggedOut, auth.getLoginRegister);
     router.get("/profile", auth.checkLoggedIn, profile.getProfile);
+    router.get("/profile_updated", auth.checkLoggedIn, profile.getProfile_updated);
     router.get("/logout", auth.checkLoggedIn, auth.getLogOut)
 
     router.post("/register", auth.checkLoggedOut, authValid.register, auth.postRegister)
