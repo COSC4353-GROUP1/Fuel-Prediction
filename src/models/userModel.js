@@ -15,7 +15,7 @@ let UserSchema = new Schema({
   address_2: {type: String, default: null},
   city: {type: String, default: null},
   state: {type: String, default: null},
-  zipCode: {type: String, default: null},
+  zipcode: {type: String, default: null},
   tokenUpdated: {type:Boolean, default: false},
   createAt: {type: Number, default: Date.now},
   updateAt: {type: Number, default: Date.now},
