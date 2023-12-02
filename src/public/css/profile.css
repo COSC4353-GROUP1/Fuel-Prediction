@@ -1,106 +1,126 @@
-body {
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #ccc;
+    --form-border: 5px solid #969595;
+  }
   
+  body {
     height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     background-image: url("../images/background/fuel_prediction_background2.jpg");
     background-size: cover;
-    background-repeat: none;
+    background-repeat: no-repeat;
     color: black;
-}
-
-.container {height: 100%;}
-
-div .profile-form {
-    width: 900px;
-    display: inline-block;
-    border: 5px solid #969595;
-    background-color:#ede6e6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  .container {
+    height: 100%;
+  }
+  
+  .profile-form {
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border: var(--form-border);
+    background-color: #ede6e6;
     border-radius: 20px;
-}
-
-.profile-title {
-    font-size: 20px;
+  }
+  
+  .profile-title {
+    font-size: 24px;
     text-align: center;
-    padding:auto;
-}
-
-.control-label {
-    text-align: center;
-}
-.profile {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-
-.divider {
-    border: solid 1px #ccc;
-    margin-top: 10px;
     margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
+  }
+  
+  .control-label {
+    text-align: left;
     font-weight: bold;
-}
-
-.form-control {
-    width: 100%;
+  }
+  
+  .divider {
+    border: solid 1px #ccc;
+    margin: 20px 0;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .label-input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .label-input-group label {
+    flex-basis: 45%;
+    margin-right: 10px;
+  }
+  
+  .form-control {
+    width: calc(55% - 10px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
- 
-}
-
-.gender-options {
+  }
+  
+  .gender-options {
     display: flex;
     justify-content: space-between;
-}
-
-.gender-option {
-    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+  
+  .gender-option {
+    flex-basis: 48%;
     text-align: center;
-}
-
-.button-container {
+  }
+  
+  .button-container {
     display: flex;
     justify-content: center;
-    gap: 10px; 
-}
-
-.btn-primary {
-    background-color: #007bff;
+  }
+  
+  .btn-primary,
+  .btn-default {
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-}
-
-.btn-default {
-    background-color: #ccc;
+  }
+  
+  .btn-default {
+    background-color: var(--secondary-color);
     color: #000;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-
-.btn-primary,
-.btn-default {
-    flex-basis: 45%; 
-    text-align: center;
-}
+    margin-left: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .label-input-group {
+      flex-direction: column;
+    }
+  
+    .form-control {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    .gender-options {
+      flex-direction: column;
+    }
+  
+    .gender-option {
+      margin-bottom: 10px;
+      flex-basis: 100%;
+    }
+  }
+  

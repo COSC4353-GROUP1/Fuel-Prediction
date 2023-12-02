@@ -1,6 +1,6 @@
 body {
-  
   height: 100vh;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -8,9 +8,10 @@ body {
   font-weight: 400;
   background-image: url("../images/background/fuel_prediction_background.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   color: black;
 }
+
 .tab button {
   background-color: #595757;
   color: white;
@@ -20,7 +21,6 @@ body {
   padding: 10px 20px;
 }
 
-/* Style tab content */
 .tabcontent {
   display: none;
   padding: 20px;
@@ -31,7 +31,7 @@ body {
   margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px; 
+  padding: 20px;
   margin-top: -1.5%;
 }
 
@@ -47,21 +47,10 @@ input[type="date"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-bottom: 15px; 
 }
 
-button[type="button"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="button"]:hover {
-  background-color: #0062cc;
-}
+button[type="button"],
 button[type="reset"] {
   width: 100%;
   padding: 10px;
@@ -70,8 +59,10 @@ button[type="reset"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 15px; 
 }
 
+button[type="button"]:hover,
 button[type="reset"]:hover {
   background-color: #0062cc;
 }
@@ -89,7 +80,7 @@ table {
 th, td {
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: left; 
+  text-align: left;
 }
 
 th {
@@ -97,9 +88,15 @@ th {
   color: #fff;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+table tr:nth-child(odd) {
+  background-color: #ffffff;
 }
+
+table tr:nth-child(even) {
+  background-color: #b3e0ff;
+  color: #333;
+}
+
 .button-container {
   text-align: center;
   margin-bottom: 20px;
@@ -107,10 +104,10 @@ tr:nth-child(even) {
 
 .nav-button {
   padding: 10px 20px;
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   border-radius: 5px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .dropdown {
@@ -118,6 +115,7 @@ tr:nth-child(even) {
   position: relative;
   height: 100px;
 }
+
 .dropdown-options {
   display: none;
   position: absolute;
@@ -132,7 +130,7 @@ tr:nth-child(even) {
   font-weight: bold;
 }
 
-.dropdown:hover .dropdown-options{
+.dropdown:hover .dropdown-options {
   display: block;
 }
 
