@@ -26,5 +26,5 @@ function clearEdit() {
 }
 
 function cancelEdit() {
-  window.location.href = 'http://localhost:8017/fuelPrediction';
+  window.location.href = '/fuelPrediction';
 }
