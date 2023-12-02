@@ -1,126 +1,125 @@
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #ccc;
-    --form-border: 5px solid #969595;
-  }
-  
-  body {
-    height: 100vh;
-    margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    background-image: url("../images/background/fuel_prediction_background2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: black;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-  
-  .container {
-    height: 100%;
-  }
-  
-  .profile-form {
-    width: 80%;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    border: var(--form-border);
-    background-color: #ede6e6;
-    border-radius: 20px;
-  }
-  
-  .profile-title {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .control-label {
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .divider {
-    border: solid 1px #ccc;
-    margin: 20px 0;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
+  --primary-color: #007bff;
+  --secondary-color: #ccc;
+  --form-border: 5px solid #969595;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  background-image: url("../images/background/fuel_prediction_background2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  height: 100%;
+}
+
+.profile-form {
+  width: 80%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  border: var(--form-border);
+  background-color: #ede6e6;
+  border-radius: 20px;
+}
+
+.profile-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.control-label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.divider {
+  border: solid 1px #ccc;
+  margin: 20px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label-input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label-input-group label {
+  flex-basis: 45%;
+  margin-right: 10px;
+}
+
+.form-control {
+  width: calc(55% - 10px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.gender-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.gender-option {
+  flex-basis: 48%;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary,
+.btn-default {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-default {
+  background-color: var(--secondary-color);
+  color: #000;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
   .label-input-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
   }
-  
-  .label-input-group label {
-    flex-basis: 45%;
-    margin-right: 10px;
-  }
-  
+
   .form-control {
-    width: calc(55% - 10px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
   }
-  
+
   .gender-options {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
   }
-  
+
   .gender-option {
-    flex-basis: 48%;
-    text-align: center;
+    margin-bottom: 10px;
+    flex-basis: 100%;
   }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .btn-primary,
-  .btn-default {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .btn-default {
-    background-color: var(--secondary-color);
-    color: #000;
-    margin-left: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .label-input-group {
-      flex-direction: column;
-    }
-  
-    .form-control {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .gender-options {
-      flex-direction: column;
-    }
-  
-    .gender-option {
-      margin-bottom: 10px;
-      flex-basis: 100%;
-    }
-  }
-  
+}
