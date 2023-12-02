@@ -1,35 +1,31 @@
-function openTab(){
-    // Get tab container, tab buttons and tab content divs
-  const tabButtons = document.querySelectorAll(".nav-button"); 
-  const tabContents = document.querySelectorAll(".tabcontent");
+(function () {
+  function openTab(event, tabIndex) {
+    event.preventDefault();
 
-  // Function to switch tab
-  const switchTab = (tabIndex) => {
-    // Hide all tab content divs
-    tabContents.forEach(tabContent => {
-      tabContent.style.display = "none";
-    });
-    
-    // Remove 'active' class from all buttons
-    tabButtons.forEach(tabButton => {
-      tabButton.classList.remove("active");
+    const tabButtons = document.querySelectorAll(".nav-button");
+    const tabContents = document.querySelectorAll(".tabcontent");
+
+    const switchTab = (tabIndex) => {
+      tabContents.forEach((tabContent) => {
+        tabContent.style.display = "none";
+      });
+
+      tabButtons.forEach((tabButton) => {
+        tabButton.classList.remove("active");
+      });
+
+      tabContents[tabIndex].style.display = "block";
+      tabButtons[tabIndex].classList.add("active");
+    };
+
+    tabButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        switchTab(index);
+      });
     });
 
-    // Show selected tab content div
-    tabContents[tabIndex].style.display = "block";
-    
-    // Add 'active' class to selected button
-    tabButtons[tabIndex].classList.add("active");
+    switchTab(tabIndex);
   }
 
-  // Add click event to tab buttons
-  tabButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      switchTab(index);
-    });
-  });
-
-  // Show first tab content by default
-  switchTab(0);
-}
-
+  window.openTab = openTab;
+})();
